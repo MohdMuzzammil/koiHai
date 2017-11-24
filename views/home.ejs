@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html>
+<title>Home</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script rel="script" src="/javascripts/home/getData.js"></script>
+<style>
+    html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+</style>
+<body class="w3-light-grey">
+
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+    <!-- The Grid -->
+    <div class="w3-row-padding">
+
+        <nav class="navbar navbar-inverse w3-white">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/home">koiHai</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="/home">Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Left Column -->
+        <div class="w3-third w3-margin-bottom">
+
+            <div class="w3-white w3-text-grey w3-card-4">
+                <div class="w3-display-container w3-center">
+                    <div class="w3-container">
+                        <object data="/images/home/default.png" type="image/png">
+                            <img class="img-responsive" src="/images/home/default.png" alt="Avatar">
+                        </object>
+                    </div>
+                    <div class="w3-display-bottom w3-container w3-text-black">
+                        <h2><%= data[0].name %></h2>
+                    </div>
+               </div>
+                <div class="w3-container">
+                    <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i><%= data[0].profession%></p>
+                    <p><i class="fa fa-id-card-o fa-fw w3-margin-right w3-large w3-text-teal"></i><%= data[0].aadhaarNo%></p>
+                    <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i><%= data[0].city %></p>
+                    <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><%= data[0].address %></p>
+                    <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i><%= data[0].mobNo %></p>
+                    <hr>
+                </div>
+                <div class="w3-container w3-center">
+                    <input name="submit" onclick="document.getElementById('id01').style.display='block';fillProfile('id01','<%=data[0]._id%>')" value="Edit Profile" class="w3-button w3-light-grey w3-border w3-round-large"/>
+                    <hr>
+                </div>
+                <br>
+                </div>
+            <!-- End Left Column -->
+        </div>
+
+
+        <!--  modal -->
+
+
+            <div id="id01" class="w3-modal">
+                <div class="w3-modal-content w3-card-4">
+                    <header class="w3-container w3-teal">
+                        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                    </header>
+                    <div class="w3-container w3-teal">
+                        <h2>Edit Profile</h2>
+                    </div>
+                    <form method="post" action="/editProfile" class="w3-container w3-card-4">
+                        <br>
+                        <p>
+                            <label class="w3-text-grey">Name</label>
+                            <input name="name" class="w3-input w3-border" type="text" value="" required>
+                        </p>
+                        <p>
+                            <label class="w3-text-grey">Profession</label>
+                            <input name="profession" class="w3-input w3-border" type="text" required>
+                        </p>
+                        <p>
+                            <label class="w3-text-grey">City</label>
+                            <input name="city" class="w3-input w3-border" type="text" required>
+                        </p>
+                        <p>
+                            <label class="w3-text-grey">Mob No</label>
+                            <input name="mobNo" class="w3-input w3-border" type="text" required>
+                        </p>
+                        <p>
+                            <label class="w3-text-grey">Address</label>
+                            <textarea name="address" class="w3-input w3-border" style="resize:none"></textarea>
+                        </p>
+                        <br>
+
+                        <p><input onclick="return validateEditProfile()" type="submit" class="w3-btn w3-padding w3-teal" style="width:120px"/></p>
+                    </form>
+
+
+                </div>
+            </div>
+
+
+
+
+
+
+        <div id="id02" class="w3-modal">
+            <div class="w3-modal-content w3-card-4">
+                <header class="w3-container w3-teal">
+                    <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                </header>
+                <div class="w3-container w3-teal">
+                    <h2>Edit Profile</h2>
+                </div>
+                <form class="w3-container w3-card-4">
+                    <br>
+                    <p>
+                        <label class="w3-text-grey">Name</label>
+                        <input name="name" class="w3-input w3-border" type="text" value="" disabled>
+                    </p>
+                    <p>
+                        <label class="w3-text-grey">Profession</label>
+                        <input name="profession" class="w3-input w3-border" type="text" disabled>
+                    </p>
+                    <p>
+                        <label class="w3-text-grey">City</label>
+                        <input name="city" class="w3-input w3-border" type="text" disabled>
+                    </p>
+                    <p>
+                        <label class="w3-text-grey">Mob No</label>
+                        <input name="mobNo" class="w3-input w3-border" type="text" disabled>
+                    </p>
+                    <p>
+                        <label class="w3-text-grey">Address</label>
+                        <textarea name="address" class="w3-input w3-border" style="resize:none" disabled></textarea>
+                    </p>
+                    <br>
+
+                </form>
+
+
+            </div>
+        </div>
+
+
+
+        <!-- Right Column -->
+        <div class="w3-twothird">
+
+            <div class="w3-container w3-card w3-white w3-margin-bottom">
+                <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Post Job</h2>
+                <form action="/postJobs" method="post">
+                    <div class="w3-container form-group">
+                        <label><h5 class="w3-opacity"><b>Profession Required</b></h5></label>
+                        <select name="profession" class="form-control">
+                            <option value="">Choose</option>
+                            <option value="carpenter">Carpenter</option>
+                            <option value="plumber">Plumber</option>
+                            <option value="electrician">Electrician</option>
+                            <option value="installation">Installation</option>
+                            <option value="painting">Painting</option>
+                            <option value="repair">Repair</option>
+                        </select>
+                    </div>
+                    <div class="w3-container form-group">
+                        <label><h5 class="w3-opacity"><b>City</b></h5></label>
+                        <input type="text" name="city" class="form-control" required/>
+                    </div>
+                    <div class="w3-container form-group">
+                        <label><h5 class="w3-opacity"><b>Description</b></h5></label>
+                        <textarea type="text" name="description" class="form-control" required></textarea>
+                    </div>
+                    <div class="w3-container form-group">
+                        <input type="submit" class="w3-button w3-light-grey w3-border w3-round-large" value="Post Job" onsubmit=""/>
+                    </div>
+                </form>
+                <hr/>
+
+            </div>
+
+
+
+
+
+
+            <!-- End Right Column -->
+        </div>
+
+        <div class="w3-row-padding">
+            <!-- model for jobs-->
+            <div class="w3-container w3-card w3-white">
+                <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-briefcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Jobs</h2>
+
+
+                <!-- nav bar form-->
+                <nav class="navbar navbar-inverse w3-white">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" onclick="myJobs()">My Jobs</a>
+                        </div>
+                        <form class="navbar-form navbar-right" id="searchJob">
+                            <div class="w3-container form-group">
+                                <select name="profession" class="form-control">
+                                    <option value="">Search by</option>
+                                    <option value="profession">Profession</option>
+                                    <option value="city">City</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text"class="form-control" placeholder="Search">
+                            </div>
+                            <input name="submit" onclick="getJobs()" value="Find Jobs" class="w3-button w3-light-grey w3-border w3-round-large"/>
+                        </form>
+                    </div>
+                </nav>
+
+                <!-- end of navbar form-->
+                <div id="jobList">
+
+                <!--<div class="w3-container">
+                    <div class="w3-container navbar">
+                        <h4 class="w3-opacity navbar-header"><b>Job Title</b></h4>
+                        <a onclick="deleteJobs(jobId)"><i class="glyphicon glyphicon-remove w3-margin-right w3-xxlarge navbar-right"></i></a>
+                    </div>
+                    <div class="w3-container">
+                        <p><i class="fa fa-calendar fa-fw w3-margin-right  w3-large w3-text-teal"></i>Date</p>
+                        <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>City</p>
+                        <p>Description</p>
+                    </div>
+                    <hr>
+                </div>-->
+                </div>
+                <!-- end of model-->
+
+            </div >
+
+        </div>
+        <!-- End Grid -->
+    </div>
+
+    <!-- End Page Container -->
+</div>
+
+
+</body>
+</html>

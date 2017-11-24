@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="/stylesheets/login/css/style.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script type="text/javascript" src="/javascripts/login/js/validateLogin.js"></script>    <!--webfonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text.css'/>
+    <!--//webfonts-->
+</head>
+<body>
+<div class="main">
+    <div class="header" >
+        <h1>Login or Create a Free Account!</h1>
+    </div>
+    <form method="POST" action="/createAccount">
+        <ul class="left-form">
+            <h2>New Account:</h2>
+            <li>
+                <input name="name" type="text"   placeholder="name" required>
+                <div class="clear"> </div>
+            </li>
+            <li>
+                <input name="mobNo" type="text" placeholder="mobNo" required/>
+
+                <div class="clear"> </div>
+            </li>
+            <li>
+                <input name="aadhaarNo" type="text"   placeholder="aadhaarNo" required>
+                <div class="clear"> </div>
+            </li>
+            <li>
+                <input name="address" type="text"   placeholder="address" required>
+                <div class="clear"> </div>
+            </li>
+            <li>
+                <input name="city" type="text"   placeholder="city" required>
+                <div class="clear"> </div>
+            </li>
+            <li>
+                <input name="profession" type="text"   placeholder="profession" required>
+                <div class="clear"> </div>
+            </li>
+            <li>
+                <input name="username" type="text"   placeholder="Username" required>
+                <div class="clear"> </div>
+            </li>
+            <li>
+                <input name="password1" type="password"   placeholder="password" required/>
+
+                <div class="clear"> </div>
+            </li>
+            <li>
+                <input name="password2" type="password"   placeholder="password" required/>
+
+                <div class="clear"> </div>
+            </li>
+            <input type="submit" onclick="return myFunction('left-form')" value="Create Account">
+            <div class="clear"> </div>
+        </ul>
+    </form>
+    <form method="POST" action="/validateLogin">
+        <ul class="right-form">
+            <h3>Login:</h3>
+            <div>
+                <li><input name="username" type="text"  placeholder="Username" required/></li>
+                <li> <input name="password" type="password"  placeholder="Password" required/></li>
+                <h4>I forgot my Password!</h4>
+                <input type="submit" onclick="return myFunction('right-form')" value="Login" >
+            </div>
+            <div class="clear"> </div>
+        </ul>
+        <div class="clear"> </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>
